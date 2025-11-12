@@ -79,7 +79,13 @@
 function walkTheDog(){
     return new Promise((resolve, reject) => {
         setTimeout(() =>{
-            resolve("you walk the dog 🐶");
+            const presenceOfDog = true;
+            if (presenceOfDog){
+                resolve("you walk the dog 🐶");
+            }else{
+                reject('you dont have a dog')
+            }
+
         }, 1500)
     })
 }
@@ -87,7 +93,12 @@ function walkTheDog(){
 function cleanTheCicthen(){
     return new Promise((resolve, reject) => {
         setTimeout(( )=>{
-            resolve("you clean the citchen 🧼");
+            const status = false 
+            if (status){
+                resolve("you clean the citchen 🧼");
+            } else{
+                reject("kitchen is clean")
+            }
         }, 2500);
     })
 }
@@ -102,4 +113,5 @@ function takeOutTheTrash(){
 
 walkTheDog().then(value => {console.log(value); return cleanTheCicthen()})
     .then(value => {console.log(value); return takeOutTheTrash()})
-    .then(value => {console.log(value); console.log("all chores are finished")});
+    .then(value => {console.log(value); console.log("all chores are finished")})
+    .catch(error => console.error(error));
